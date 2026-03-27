@@ -1,0 +1,23 @@
+{
+  "name": "budget-calculator",
+  "version": "1.0.0",
+  "description": "Prosta aplikacja webowa do zarządzania wydatkami domowymi z testami Cypress.",
+  "main": "script.js",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "budget",
+    "cypress",
+    "javascript",
+    "web"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "serve": "^14.2.4"
+  }
+}

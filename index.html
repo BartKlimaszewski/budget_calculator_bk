@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator budżetu domowego</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Kalkulator budżetu domowego</h1>
+      <p>Dodawaj wydatki, kontroluj sumę i filtruj je według kategorii.</p>
+    </header>
+
+    <main class="grid">
+      <section class="card form-card">
+        <h2>Dodaj wydatek</h2>
+        <form id="expenseForm" novalidate>
+          <div class="form-group">
+            <label for="name">Nazwa wydatku</label>
+            <input type="text" id="name" placeholder="Np. Zakupy spożywcze">
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Kwota (zł)</label>
+            <input type="number" id="amount" min="0.01" step="0.01" placeholder="Np. 89.99">
+          </div>
+
+          <div class="form-group">
+            <label for="category">Kategoria</label>
+            <select id="category">
+              <option value="">Wybierz kategorię</option>
+              <option value="Jedzenie">Jedzenie</option>
+              <option value="Transport">Transport</option>
+              <option value="Rachunki">Rachunki</option>
+              <option value="Rozrywka">Rozrywka</option>
+              <option value="Inne">Inne</option>
+            </select>
+          </div>
+
+          <p id="errorMessage" class="message error" aria-live="polite"></p>
+
+          <div class="button-row">
+            <button type="submit" class="btn primary">Dodaj wydatek</button>
+            <button type="button" id="clearAllBtn" class="btn danger-outline">Usuń wszystko</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card summary-card">
+        <h2>Podsumowanie</h2>
+        <div class="summary-box">
+          <span>Łączna suma wydatków</span>
+          <strong id="totalAmount">0.00 zł</strong>
+        </div>
+
+        <div class="form-group filter-group">
+          <label for="filterCategory">Filtruj po kategorii</label>
+          <select id="filterCategory">
+            <option value="Wszystkie">Wszystkie</option>
+            <option value="Jedzenie">Jedzenie</option>
+            <option value="Transport">Transport</option>
+            <option value="Rachunki">Rachunki</option>
+            <option value="Rozrywka">Rozrywka</option>
+            <option value="Inne">Inne</option>
+          </select>
+        </div>
+      </section>
+    </main>
+
+    <section class="card list-card">
+      <div class="list-header">
+        <h2>Lista wydatków</h2>
+        <span id="expensesCount">Liczba pozycji: 0</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nazwa</th>
+              <th>Kategoria</th>
+              <th>Kwota</th>
+              <th>Akcja</th>
+            </tr>
+          </thead>
+          <tbody id="expenseList"></tbody>
+        </table>
+      </div>
+
+      <p id="emptyState" class="empty-state">Brak wydatków do wyświetlenia.</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
